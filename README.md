@@ -1,4 +1,4 @@
-# Projeto criado junto com o projeto JORNADA FULLSTACK da Ebac
+# Projeto criado junto com a JORNADA FULLSTACK da Ebac
 
 Para preparar o ambiente de desenvolvimento, instalamos o `node` para podermos criar nosso projeto com o `react`.
 
