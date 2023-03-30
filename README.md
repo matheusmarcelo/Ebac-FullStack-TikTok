@@ -143,3 +143,5 @@ export default Video;
 Para criarmos a funcionalidade de nossos videos de **play** e **pause** temos que criar uma referencia, e para isso foi instanciado a variavel _videoRef_ com o ReactHook `useRef` e para a funcionalidade usamos o `useState` com as variaves _play_ e _setPlay_.
 
 Após ter instanciados nossa variaves de referencia e funcionalidade, criamos a função `handdleStart()` para de fato mudarmos o estado de **play** e **pause** de nosso video.
+
+![image](https://user-images.githubusercontent.com/76077366/228705880-55eeec00-2de8-43f6-9e28-bf11f5d589e5.png)
