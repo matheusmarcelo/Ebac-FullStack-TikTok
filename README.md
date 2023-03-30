@@ -16,7 +16,7 @@ Instalamos algumas extensões no nosso VS Code para nos auxiliar durante o proje
 
 ## Começando o projeto
 
-Para iniciarmos nosso projetos excluimos alguns arquivos que não serão necessarios para nosso projeto, como por exemplo os arquivos `setupTests.js`, `reportWebVitals.js`, `logo.svg` e `App.test.js`.
+Para iniciarmos nosso projetos excluimos alguns arquivos que não serão necessarios, como por exemplo os arquivos `setupTests.js`, `reportWebVitals.js`, `logo.svg` e `App.test.js`.
 
 Após ter feito isso corrigimos alguns erros de importação e partimos para o desenvolvimento.
 
