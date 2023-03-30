@@ -144,4 +144,5 @@ Para criarmos a funcionalidade de nossos videos de **play** e **pause** temos qu
 
 Após ter instanciados nossa variaves de referencia e funcionalidade, criamos a função `handdleStart()` para de fato mudarmos o estado de **play** e **pause** de nosso video.
 
+O projeto está ficando com está cara:
 ![image](https://user-images.githubusercontent.com/76077366/228705880-55eeec00-2de8-43f6-9e28-bf11f5d589e5.png)
