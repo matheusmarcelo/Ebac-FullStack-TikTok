@@ -16,7 +16,7 @@ Instalamos algumas extensões no nosso VS Code para nos auxiliar durante o proje
 
 ## Começando o projeto
 
-Para iniciarmos nosso projetos excluimos alguns arquivos que não serão necessarios para nosso projeto, como por exemplo os arquivos `setupTests.js`, `reportWebVitals.js`, `logo.svg` e `App.test.js`.
+Para iniciarmos nosso projetos excluimos alguns arquivos que não serão necessarios, como por exemplo os arquivos `setupTests.js`, `reportWebVitals.js`, `logo.svg` e `App.test.js`.
 
 Após ter feito isso corrigimos alguns erros de importação e partimos para o desenvolvimento.
 
@@ -143,3 +143,7 @@ export default Video;
 Para criarmos a funcionalidade de nossos videos de **play** e **pause** temos que criar uma referencia, e para isso foi instanciado a variavel _videoRef_ com o ReactHook `useRef` e para a funcionalidade usamos o `useState` com as variaves _play_ e _setPlay_.
 
 Após ter instanciados nossa variaves de referencia e funcionalidade, criamos a função `handdleStart()` para de fato mudarmos o estado de **play** e **pause** de nosso video.
+
+E então nosso projeto está ficando com está cara:
+
+image.png
