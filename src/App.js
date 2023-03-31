@@ -6,6 +6,7 @@ function App() {
     <div className="App">
       <div className="app__videos">
         <Video />
+        <Video />
       </div>
     </div>
   );

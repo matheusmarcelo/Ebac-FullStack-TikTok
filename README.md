@@ -24,7 +24,7 @@ Começamos então preparando nossa estilização para o nosso clone e arquitetur
 
 Trecho da estilização no arquivo `App.css`
 
-```
+```css
 html {
   scroll-snap-type: y mandatory;
 }
@@ -65,7 +65,7 @@ html {
 
 Trecho da arquitetura do html no arquivo `App.js`
 
-```
+```javascript
 import "./App.css";
 import Video from "./pages/video";
 
@@ -88,24 +88,24 @@ Após estilizar e arquitetar nosso arquivo `App.js`, criamos nosso primeiro comp
 
 Aqui vai um trecho do nosso arquivo `video.css`
 
-```
+```css
 .video {
-    height: 100%;
-    width: 100%;
-    scroll-snap-align: start;
-    position: relative;
+  height: 100%;
+  width: 100%;
+  scroll-snap-align: start;
+  position: relative;
 }
 
 .video__player {
-    height: 100%;
-    width: 100%;
-    object-fit: fill;
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
 }
 ```
 
 e também de nosso arquivo `video.js`
 
-```
+```javascript
 import React, { useRef, useState } from "react";
 import "./video.css";
 
@@ -144,6 +144,147 @@ Para criarmos a funcionalidade de nossos videos de **play** e **pause** temos qu
 
 Após ter instanciados nossa variaves de referencia e funcionalidade, criamos a função `handdleStart()` para de fato mudarmos o estado de **play** e **pause** de nosso video.
 
-E então nosso projeto está ficando com está cara:
+## Fazendo o footer do video
 
-image.png
+Para criamos o footer de nosso video, criamos mais um componente chamado `VideoFooter` dentro das pastas `components\footer`.
+
+E inserimos dentro do componente `Video`
+
+```javascript
+import React, { useRef, useState } from "react";
+import VideoFooter from "./components/footer/VideoFooter";
+import "./video.css";
+
+function Video() {
+  const videoRef = useRef(null);
+  const [play, setPlay] = useState(false);
+
+  function handdleStart() {
+    if (!play) {
+      videoRef.current.play();
+      setPlay(true);
+    } else {
+      videoRef.current.pause();
+      setPlay(false);
+    }
+  }
+
+  return (
+    <div className="video">
+      <video
+        className="video__player"
+        ref={videoRef}
+        onClick={handdleStart}
+        loop
+        src="https://static.videezy.com/system/resources/previews/000/034/644/original/Boy_plane8.mp4"
+      ></video>
+      {/* Side bar*/}
+      {/* Footer */}
+      <VideoFooter />
+    </div>
+  );
+}
+
+export default Video;
+```
+
+A estrutura do nosso componente `VideoFooter` ficou deste jeito
+
+```javascript
+import React from "react";
+import "./VideoFooter.css";
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
+
+function VideoFooter() {
+  return (
+    <div className="video__footer">
+      <div className="videoFooter__text">
+        <h3>@maatheus</h3>
+        <p>Descrição do video</p>
+        <div className="videoFooter__music">
+          <MusicNoteIcon className="videoFooter__icon" />
+          <div className="videoFooterMusic__text">
+            <p>Titulo da musica</p>
+          </div>
+        </div>
+      </div>
+      <img
+        className="videoFooter__record"
+        alt="Imagem de um vinil girando"
+        src="https://static.vecteezy.com/system/resources/previews/001/207/957/original/vinyl-record-png.png"
+      />
+    </div>
+  );
+}
+
+export default VideoFooter;
+```
+
+Criamos a animação do texto saindo da direita para a esquerda com os `@keyframes` e também a imagem do vinil girando. Para alterarmos o fundo da imagem do vinil usamos o seguinte código dentro do css:
+
+```css
+/* mudando a cor do fundo da imagem */
+filter: invert(1);
+```
+
+e assim ficou nosso arquivo `VideoFooter.css`
+
+```css
+.video__footer {
+  position: relative;
+  bottom: 20%;
+  color: white;
+  margin-left: 30px;
+}
+
+.videoFooter__text h3 {
+  padding-bottom: 20px;
+}
+
+.videoFooter__text p {
+  padding-bottom: 20px;
+}
+
+.videoFooter__music {
+  display: flex;
+}
+
+.videoFooterMusic__text {
+  width: 80%;
+  overflow-x: hidden;
+}
+
+.videoFooterMusic__text p {
+  animation: mooveTheText 2s infinite linear;
+}
+
+.videoFooter__record {
+  animation: spinTheRecord 3s infinite linear;
+  position: absolute;
+  bottom: 5px;
+  right: 20px;
+  height: 50px;
+
+  /* mudando a cor do fundo da imagem */
+  filter: invert(1);
+}
+
+/* animando o vinil */
+@keyframes spinTheRecord {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mooveTheText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+```
