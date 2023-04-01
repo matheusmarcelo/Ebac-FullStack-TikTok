@@ -1,17 +1,18 @@
 import React, { useRef, useState } from "react";
 import VideoFooter from "./components/footer/VideoFooter";
+import VideoSideBar from "./components/sidebar/VideoSideBar";
 import "./video.css";
 
-function Video() {
+function Video({ likes, messages, shares, name, description, music, url }) {
   const videoRef = useRef(null);
   const [play, setPlay] = useState(false);
 
   function handdleStart() {
     if (!play) {
-      videoRef.current.play();
+      videoRef.current.pause();
       setPlay(true);
     } else {
-      videoRef.current.pause();
+      videoRef.current.play();
       setPlay(false);
     }
   }
@@ -23,11 +24,12 @@ function Video() {
         ref={videoRef}
         onClick={handdleStart}
         loop
-        src="https://static.videezy.com/system/resources/previews/000/033/826/original/pattaya-aerial-view30.mp4"
+        src={url}
       ></video>
       {/* Side bar*/}
+      <VideoSideBar likes={likes} messages={messages} shares={shares} />
       {/* Footer */}
-      <VideoFooter />
+      <VideoFooter name={name} description={description} music={music} />
     </div>
   );
 }
