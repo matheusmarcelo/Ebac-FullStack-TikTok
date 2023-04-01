@@ -144,8 +144,6 @@ Para criarmos a funcionalidade de nossos videos de **play** e **pause** temos qu
 
 Após ter instanciados nossa variaves de referencia e funcionalidade, criamos a função `handdleStart()` para de fato mudarmos o estado de **play** e **pause** de nosso video.
 
-<<<<<<< HEAD
-
 ## Fazendo o footer do video
 
 Para criamos o footer de nosso video, criamos mais um componente chamado `VideoFooter` dentro das pastas `components\footer`.
@@ -346,9 +344,9 @@ function VideoSideBar({ likes, messages, shares }) {
 export default VideoSideBar;
 ```
 
-Observe que usamos operadores ternarios para a exibição de icones e quantidade de likes. Criamos a função `handdleLikee()` para a aletaração dos icones "curtido" e não "curtido".
+Observe que usamos operadores ternarios para a exibição de icones e quantidade de likes. Criamos a função `handdleLikee()` para a aletaração dos icones "curtido" e "não curtido".
 
-Adicionamos _props_ ao nosso componente onde passamos diretamente pelo nosso `App.js` para o componente `Video` e assim para os componentes `VideoSideBar` e `VideoFooter`.
+Adicionamos _props_ ao nosso componente onde passamos diretamente do nosso `App.js` para o componente `Video` e assim para os componentes `VideoSideBar` e `VideoFooter`.
 
 ### Componente `App`
 
