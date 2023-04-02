@@ -472,3 +472,42 @@ Usamos o `useEffect()` para assim que atualizarmos nossa página ele já puxar t
   });
 }
 ```
+
+Fizemos algumas alterações na estilização do nosso projeto, para que fique compativel com o Mobile.
+
+Alteração no `App.css`
+
+```css
+@media only screen and (max-width: 440px) {
+  .app__videos {
+    width: 100%;
+    height: 100vh;
+  }
+}
+```
+
+Alteração no `VideoFooter.css`
+
+```css
+@media only screen and (max-width: 440px) {
+  .video__footer {
+    bottom: 22%;
+  }
+
+  .videoFooterMusic__text {
+    width: 78%;
+  }
+}
+```
+
+Alteração no `VideoSideBar.css`
+
+```css
+@media only screen and (max-width: 440px) {
+  .video__sidebar {
+    top: 46%;
+  }
+}
+```
+
+Após feito estas alterações, fizemos o deploy do nosso projeto. Para ver como ficou meu projeto clique [aqui](https://tiktok---jornada-5cf97.web.app/)
