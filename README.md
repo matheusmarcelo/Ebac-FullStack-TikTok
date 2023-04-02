@@ -385,3 +385,90 @@ Após estes passos criamos então nossa estilização
   text-align: center;
 }
 ```
+
+## Conectando com o banco de dados
+
+Com nosso front-end pronto, partimos para a criação e conexão com o banco de dados. Como escolha para o banco de dados nesse projeto foi escolhido o **Firebase**.
+
+Optei para não mostrar o passo a passo da criação do banco de dados para não ficar muito extenso este README, mas recomendo entrar no link do [_Firebase_](https://firebase.google.com/docs/web/setup?hl=pt-br) e seguir a documentação para a criação do BD.
+
+Com nosso banco de dados criado, criamos a pasta **config** dentro da pasta **src** e criamos o arquivo `firebase.js`. Por questão de segurança, não irei colocar o código da configuração do banco de dados, mas recomendo novamente para seguir a documentação do [_Firebase_](https://firebase.google.com/docs/web/setup?hl=pt-br).
+
+Feito toda a criação e configuração do nosso banco de dados, iremos fazer algumas modificações dentro do `App.js`.
+
+```js
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Video from "./pages/video";
+import db from "./config/firebase";
+import { collection, getDocs } from "firebase/firestore/lite";
+
+function App() {
+  const [videos, setVideos] = useState([]);
+
+  /* pegando as informações do banco de dados */
+  async function getVideos() {
+    const videosCollection = collection(db, "videos");
+    const videosSnapshot = await getDocs(videosCollection);
+    const videosList = videosSnapshot.docs.map((doc) => doc.data());
+    setVideos(videosList);
+  }
+
+  useEffect(() => {
+    getVideos();
+  }, []);
+
+  return (
+    <div className="App">
+      <div className="app__videos">
+        {videos.map((item) => {
+          return (
+            <Video
+              likes={item.likes}
+              messages={item.messages}
+              shares={item.shares}
+              name={item.name}
+              description={item.description}
+              music={item.music}
+              url={item.url}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Fizemos duas novas importações para conseguirmos acessar os dados do BD.
+
+```js
+import db from "./config/firebase";
+import { collection, getDocs } from "firebase/firestore/lite";
+```
+
+A primeira mudança começa com a instanciação do `useState` com está linha de código `const [videos, setVideos] = useState([]);`. Com isso conseguimos criar uma lista dos dados de nossos videos puxados do **Firebase**.
+
+Logo após isto criamos a função `getVideos()` para pegarmos os dados do nosso banco de dados e passar para o `setVideos()`.
+
+Usamos o `useEffect()` para assim que atualizarmos nossa página ele já puxar todos os nossos videos e fazer a rederização com o `videos.map()` e assim passarmos toda as informações necessarias dentro do componente `<Video />`.
+
+```js
+{
+  videos.map((item) => {
+    return (
+      <Video
+        likes={item.likes}
+        messages={item.messages}
+        shares={item.shares}
+        name={item.name}
+        description={item.description}
+        music={item.music}
+        url={item.url}
+      />
+    );
+  });
+}
+```

@@ -47,6 +47,7 @@
     }
 }
 
+/* animando o titulo da musica */
 @keyframes mooveTheText {
     0% {
         transform: translateX(100%);

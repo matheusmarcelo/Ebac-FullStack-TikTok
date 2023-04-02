@@ -18,7 +18,8 @@ function VideoFooter({ name, description, music }) {
       <img
         className="videoFooter__record"
         alt="Imagem de um vinil girando"
-        src="https://static.vecteezy.com/system/resources/previews/001/207/957/original/vinyl-record-png.png"
+        /*src="https://static.vecteezy.com/system/resources/previews/001/207/957/original/vinyl-record-png.png"*/
+        src="https://poqlymuephttfsljdabn.supabase.co/storage/v1/object/public/jornadadev/vinil.png"
       />
     </div>
   );
